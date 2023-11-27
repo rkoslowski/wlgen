@@ -85,3 +85,10 @@ void Wordlist::generateFile(){
 
     std::cout << uniqueWords.size() << " unique words written to: " << outputFilename << std::endl;
 }
+
+bool Wordlist::isAsciiChar(char c){
+    
+    // Check if the character value is in the ASCII range (0 to 127)
+    return static_cast<unsigned char>(c) <= 127;
+    
+}

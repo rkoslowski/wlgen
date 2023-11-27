@@ -49,6 +49,8 @@ target_sources (${CMAKE_PROJECT_NAME}
         src/wordlist.h
         src/wordlist.cpp
         src/main.cpp
+        src/options.cpp
+        src/options.h
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME}

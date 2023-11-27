@@ -27,4 +27,6 @@ public:
     void extractWords(const std::string& line, std::set<std::string>& uniqueWords);
     
     void generateFile();
+    
+    bool isAsciiChar(char c);
 };
