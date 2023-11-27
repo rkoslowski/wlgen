@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include "wordlist.h"
 
 int main(int argc, char* argv[]) {
@@ -7,7 +5,11 @@ int main(int argc, char* argv[]) {
     // initialize Wordlist Object
     Wordlist wl;
     
-    std::cout << "default message" << std::endl;
+    // input validation
+    
+    // input split and code adjustment
+    
+    wl.generateWordlist();
     
     return 0;
 }
