@@ -6,7 +6,6 @@
 #include <fstream>
 #include <set>
 
-
 class Wordlist {
 public:
 
@@ -16,9 +15,9 @@ public:
     bool validateParameter();
     
     void generateWordlist();
-
     
-     
+    void printHelpToTerminal();
+
  private:
     
     int inputWordSize;
@@ -27,4 +26,5 @@ public:
     
     void extractWords(const std::string& line, std::set<std::string>& uniqueWords);
     
+    void generateFile();
 };
