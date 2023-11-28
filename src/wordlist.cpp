@@ -4,6 +4,10 @@ Wordlist::Wordlist():
 inputWordSize(0){
 }
 
+Wordlist::Wordlist(int argc, char* argv[]) :
+op(argc, argv){
+}
+
 Wordlist::~Wordlist(){
 }
 

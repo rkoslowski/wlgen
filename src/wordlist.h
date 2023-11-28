@@ -1,24 +1,23 @@
 #pragma once
 
-#include <string>
-#include <iostream>
-#include <map>
 #include <fstream>
 #include <set>
+#include "options.h"
 
 class Wordlist {
 public:
 
     Wordlist();
+    Wordlist(int argc, char* argv[]);
     ~Wordlist();
     
     bool validateParameter();
     
     void generateWordlist();
-    
-    void printHelpToTerminal();
 
  private:
+    
+    Options op;
     
     int inputWordSize;
     std::set<std::string> uniqueWords;
