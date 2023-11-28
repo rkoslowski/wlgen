@@ -3,7 +3,7 @@
 int main(int argc, char* argv[]) {
 
     // initialize Wordlist Object
-    Wordlist wl;
+    Wordlist wl(argc, argv);
     
     // input validation
     
