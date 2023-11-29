@@ -10,30 +10,25 @@ Resolver::~Resolver(){
 }
 
 void Resolver::fetchURLContent(const char *url) {
-    // Create a stringstream to store the fetched content
+
     std::ostringstream oss;
 
-    // Use system commands to fetch the content (curl or wget)
-    const char* command = "curl -s ";  // Use "curl -s" for quiet mode
+    const char* command = "curl -s ";
     char buffer[128];
     std::string result;
 
-    // Open a pipe to the command
     FILE* pipe = popen((std::string(command) + url).c_str(), "r");
     if (!pipe) {
         std::cerr << "Error: Unable to execute the command." << std::endl;
         return EXIT_FAILURE;
     }
 
-    // Read the command output into the stringstream
     while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
         oss << buffer;
     }
 
-    // Close the pipe
     pclose(pipe);
 
-    // Get the fetched content as a string
     std::string fetchedContent = oss.str();
     
     //unneccessary, needs to be replaced properly!
@@ -77,46 +72,42 @@ std::string Resolver::removeHTMLTags(const std::string &html){
 }
 
 void Resolver::extractWords(const std::string& line, std::set<std::string>& uniqueWords){
+    
     std::string word;
-        for (char c : line) {
-            if (std::isalnum(c)) {
-                word += c;
-            } else {
-                if (!word.empty()) {
-                    uniqueWords.insert(word);
-                    //std::cout << "added " << word << std::endl;
-                    word.clear();
-                    inputWordSize++;
-                }
+    for (char c : line) {
+        if (std::isalnum(c)) {
+            word += c;
+        } else {
+            if (!word.empty()) {
+                uniqueWords.insert(word);
+                word.clear();
+                inputWordSize++;
             }
         }
-        if (!word.empty()) {
-            uniqueWords.insert(word);
-            inputWordSize++;
-        }
+    }
+    if (!word.empty()) {
+        uniqueWords.insert(word);
+        inputWordSize++;
+    }
 }
 
 void Resolver::extractFromFile(std::string file){
     
-    // Create an input file stream
     std::ifstream inputFile(file);
 
-    // Check if the file is successfully opened
     if (!inputFile.is_open()) {
         std::cerr << "Error opening file: " << file << std::endl;
-        return 1; // Exit with an error code
+        return 1;
     }
 
-    // Read the file line by line
     std::string line;
     while (std::getline(inputFile, line)) {
-        // Process each line to extract and insert unique words
         extractWords(line, resolvedWords);
     }
 
-    // Close the file
     inputFile.close();
-    std::cout << "Sourcefile contains " << inputWordSize << " words." <<std::endl;
+    
+    //std::cout << "Sourcefile contains " << inputWordSize << " words." <<std::endl;
     //std::cout << resolvedWords.size() << std::endl;
     
 }

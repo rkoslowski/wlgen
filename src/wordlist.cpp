@@ -8,7 +8,7 @@ Wordlist::Wordlist(int argc, char* argv[]) :
 op(argc, argv),
 inputWordSize(0){
     
-    generateWordlist();
+    //generateWordlist();
 }
 
 Wordlist::~Wordlist(){
