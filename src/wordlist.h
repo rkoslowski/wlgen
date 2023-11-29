@@ -1,8 +1,7 @@
 #pragma once
 
-#include <fstream>
-#include <set>
 #include "options.h"
+#include "resolver.h"
 
 class Wordlist {
 public:
@@ -11,21 +10,19 @@ public:
     Wordlist(int argc, char* argv[]);
     ~Wordlist();
     
-    bool validateParameter();
-    
     void generateWordlist();
-
+    
  private:
     
     Options op;
     
+    Resolver res;
+    
+    //later in statistics class
     int inputWordSize;
+    
     std::set<std::string> uniqueWords;
-    // arguments, parameters and option here
     
-    void extractWords(const std::string& line, std::set<std::string>& uniqueWords);
+    void generateFile(/*filetype*/);
     
-    void generateFile();
-    
-    bool isAsciiChar(char c);
 };

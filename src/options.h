@@ -11,16 +11,17 @@ public:
     Options();
     Options(int argc, char* argv[]);
     ~Options();
-    
-    // here parsing and assigning functions
-    void parseCLOptions();
-    
+        
     void printHelpToTerminal();
     
 private:
     //here all options and parameter
     int argc_;
     char** argv_;
+    
+    void parseCLOptions();
+    
+    bool validateParameter();
     
     std::map<std::string, std::string> options;
     
