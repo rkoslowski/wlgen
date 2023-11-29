@@ -2,14 +2,14 @@
 
 int main(int argc, char* argv[]) {
 
-    // initialize Wordlist Object
-    Wordlist wl(argc, argv);
-    
-    // input validation
-    
-    // input split and code adjustment
-    
-    wl.generateWordlist();
+    try {
+        
+        Wordlist wl(argc, argv);
+
+    } catch (const std::exception& e) {
+        
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
     
     return 0;
 }
