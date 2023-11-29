@@ -51,6 +51,8 @@ target_sources (${CMAKE_PROJECT_NAME}
         src/main.cpp
         src/options.cpp
         src/options.h
+        src/resolver.cpp
+        src/resolver.h
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME}
