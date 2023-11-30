@@ -17,7 +17,7 @@ Options::~Options(){
 }
 
 
-void handleNonParameterOption(std::string op) {
+void handleNonParameterOption(Options& options, std::string op) {
     
     std::cout << op << " hat keinen weiteren parameter" << std::endl;
     /*
@@ -31,9 +31,10 @@ void handleNonParameterOption(std::string op) {
      
      flags_ = 1;
      */
+    
 }
 
-void handleParameterOption(std::string op, const char* arg) {
+void handleParameterOption(Options& options, std::string op, const char* arg) {
     std::cout << op << " hat einen weiteren parameter: " << arg << std::endl;
     // bit setzen und arg zuweisen
 }
@@ -73,7 +74,7 @@ void Options::parseCLOptions(){
             // Check if the next argument exists
             if (i + 1 < argc_ && argv_[i + 1][0] != '-') {
                 // Call the associated handling function with the parameter
-                it->second(argv_[i],argv_[i + 1]);
+                it->second(*this, argv_[i],argv_[i + 1]);
                 ++i; // Skip the next argument (parameter)
             } else {
                 std::cerr << argv_[i] << " flag requires a non-flag parameter." << std::endl;
@@ -82,7 +83,7 @@ void Options::parseCLOptions(){
             auto it = nonParHandlers.find(argv_[i]);
             
             if (it != nonParHandlers.end()) {
-                it->second(argv_[i]);
+                it->second(*this, argv_[i]);
                 
             }else{
                 std::cerr << argv_[i] << " - invalid argument." << std::endl;
@@ -97,4 +98,24 @@ void Options::parseCLOptions(){
 void Options::printHelpToTerminal(){
     std::cout << "Usage: wlgen" << std::endl;
 }
+    
+void Options::setFlag(const int FLAG) {
+    flags_ |= FLAG;
+}
+
+bool Options::checkFlag(const int FLAG) {
+    return (flags_ & FLAG);
+}
+
+void Options::unsetFlag(const int FLAG) {
+    flags_ &= ~FLAG;
+}
+
+void Options::toggleFlag(const int FLAG) {
+    flags_ ^= FLAG;
+}
+    
+    
+    
+    
 

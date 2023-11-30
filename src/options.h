@@ -47,11 +47,19 @@ private:
     
     int flags_;
     
-    // Define a type for the handling functions
-    using HandlerFunction1 = std::function<void(std::string, const char* parameter)>;
+    void setFlag(const int FLAG);
+    
+    bool checkFlag(const int FLAG);
+    
+    void unsetFlag(const int FLAG);
+    
+    void toggleFlag(const int FLAG);
     
     // Define a type for the handling functions
-    using HandlerFunction2 = std::function<void(std::string)>;
+    using HandlerFunction1 = std::function<void(Options&, std::string, const char* parameter)>;
+    
+    // Define a type for the handling functions
+    using HandlerFunction2 = std::function<void(Options&, std::string)>;
 };
 
 /*
