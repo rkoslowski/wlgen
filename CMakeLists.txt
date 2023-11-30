@@ -46,13 +46,15 @@ add_executable(${CMAKE_PROJECT_NAME})
 
 target_sources (${CMAKE_PROJECT_NAME}
     PRIVATE
-        src/wordlist.h
-        src/wordlist.cpp
         src/main.cpp
+        src/wordlist.cpp
+        src/wordlist.h
         src/options.cpp
         src/options.h
         src/resolver.cpp
         src/resolver.h
+        src/bitflags.cpp
+        src/bitflags.h
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME}

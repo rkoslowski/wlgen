@@ -2,13 +2,12 @@
 
 Options::Options()
 {
-    // constructor logic
+    
 }
 
 Options::Options(int argc, char* argv[]) :
 argc_(argc),
-argv_(argv),
-flags_(0){
+argv_(argv){
     parseCLOptions();
 };
 
@@ -20,6 +19,8 @@ Options::~Options(){
 void handleNonParameterOption(Options& options, std::string op) {
     
     std::cout << op << " hat keinen weiteren parameter" << std::endl;
+    
+    //options.flags_.setFlag(const int FLAG_H);
     /*
      std::string bitflag = (op.length() > 0 && op[0] == '-') ? op.substr(1) : op;
      
@@ -98,24 +99,4 @@ void Options::parseCLOptions(){
 void Options::printHelpToTerminal(){
     std::cout << "Usage: wlgen" << std::endl;
 }
-    
-void Options::setFlag(const int FLAG) {
-    flags_ |= FLAG;
-}
-
-bool Options::checkFlag(const int FLAG) {
-    return (flags_ & FLAG);
-}
-
-void Options::unsetFlag(const int FLAG) {
-    flags_ &= ~FLAG;
-}
-
-void Options::toggleFlag(const int FLAG) {
-    flags_ ^= FLAG;
-}
-    
-    
-    
-    
 
