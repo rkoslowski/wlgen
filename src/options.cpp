@@ -18,8 +18,6 @@ Options::~Options(){
 
 void handleNonParameterOption(Options& options, std::string op) {
     
-    std::cout << op << " hat keinen weiteren parameter" << std::endl;
-    
     //options.flags_.setFlag(const int FLAG_H);
     /*
      std::string bitflag = (op.length() > 0 && op[0] == '-') ? op.substr(1) : op;
@@ -36,20 +34,19 @@ void handleNonParameterOption(Options& options, std::string op) {
 }
 
 void handleParameterOption(Options& options, std::string op, const char* arg) {
-    std::cout << op << " hat einen weiteren parameter: " << arg << std::endl;
-    // bit setzen und arg zuweisen
+    
 }
 
 void Options::parseCLOptions(){
     
+    std::cout << flags_.flagsValue() << std::endl;
     
-    std::cout << argc_ << std::endl;
+    //std::cout << argc_ << std::endl;
     
     for (int i = 0; argv_[i] != nullptr; ++i) {
         std::cout << "argv_[" << i << "]: " << argv_[i] << std::endl;
     }
     
-
     std::map<std::string, HandlerFunction2> nonParHandlers = {
         {"-h", handleNonParameterOption},
         {"-ow", handleNonParameterOption},
@@ -76,6 +73,8 @@ void Options::parseCLOptions(){
             if (i + 1 < argc_ && argv_[i + 1][0] != '-') {
                 // Call the associated handling function with the parameter
                 it->second(*this, argv_[i],argv_[i + 1]);
+                const int bitpos = flags_.getBitOfFlag(argv_[i]);
+                flags_.setFlag(bitpos);
                 ++i; // Skip the next argument (parameter)
             } else {
                 std::cerr << argv_[i] << " flag requires a non-flag parameter." << std::endl;
@@ -84,6 +83,8 @@ void Options::parseCLOptions(){
             auto it = nonParHandlers.find(argv_[i]);
             
             if (it != nonParHandlers.end()) {
+                const int bitpos = flags_.getBitOfFlag(argv_[i]);
+                flags_.setFlag(bitpos);
                 it->second(*this, argv_[i]);
                 
             }else{
@@ -92,6 +93,8 @@ void Options::parseCLOptions(){
         }
         
     }
+    
+    std::cout << flags_.flagsValue() << std::endl;
     
 }
     

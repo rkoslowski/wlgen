@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
-#include <map>
 
 class BitFlags {
 public:
@@ -18,6 +17,10 @@ public:
     void unsetFlag(const int FLAG);
     
     void toggleFlag(const int FLAG);
+    
+    const int getBitOfFlag(std::string op);
+    
+    int flagsValue();
     
 private:
     

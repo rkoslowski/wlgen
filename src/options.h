@@ -33,9 +33,7 @@ private:
     
     void printHelpToTerminal();
     
-    // Define a type for the handling functions
     using HandlerFunction1 = std::function<void(Options&, std::string, const char* parameter)>;
     
-    // Define a type for the handling functions
     using HandlerFunction2 = std::function<void(Options&, std::string)>;
 };
