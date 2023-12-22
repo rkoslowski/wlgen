@@ -31,32 +31,11 @@ int BitFlags::flagsValue(){
 }
 
 const int BitFlags::getBitOfFlag(std::string op){
-    if (op == "-h") {
-        return FLAG_H;
-    } else if (op == "-f") {
-        return FLAG_F;
-    } else if (op == "-a") {
-        return FLAG_A;
-    } else if (op == "-ow") {
-        return FLAG_OW;
-    } else if (op == "-oj") {
-        return FLAG_OJ;
-    } else if (op == "-oc") {
-        return FLAG_OC;
-    } else if (op == "-ll") {
-        return FLAG_LL;
-    } else if (op == "-lu") {
-        return FLAG_LU;
-    } else if (op == "-ean") {
-        return FLAG_EAN;
-    } else if (op == "-ea7") {
-        return FLAG_EA7;
-    } else if (op == "-ea8") {
-        return FLAG_EA8;
-    } else if (op == "-s") {
-        return FLAG_S;
+    auto it = flagMap.find(op);
+    if (it != flagMap.end()) {
+        return it->second;
     } else {
-        std::cerr << "no valid parameter here" << std::endl;
-        return -1; // or some default value representing an error
+        std::cerr << "No valid parameter here" << std::endl;
+        return -1;
     }
 }

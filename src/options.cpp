@@ -15,31 +15,18 @@ Options::~Options(){
     
 }
 
-
-void handleNonParameterOption(Options& options, std::string op) {
-    
-    //options.flags_.setFlag(const int FLAG_H);
-    /*
-     std::string bitflag = (op.length() > 0 && op[0] == '-') ? op.substr(1) : op;
-     
-     for (char& c : bitflag) {
-         c = std::toupper(static_cast<unsigned char>(c));
-     }
-     
-     bitflag = "FLAG_" + bitflag;
-     
-     flags_ = 1;
-     */
-    
+void handleNonParameterOption(Options& options, std::string op){
+    //options.lowerLimit = 11;
 }
 
-void handleParameterOption(Options& options, std::string op, const char* arg) {
+void handleParameterOption(Options& options, std::string op, const char* arg){
+    
     
 }
 
 void Options::parseCLOptions(){
     
-    std::cout << flags_.flagsValue() << std::endl;
+    //std::cout << flags_.flagsValue() << std::endl;
     
     //std::cout << argc_ << std::endl;
     
@@ -69,13 +56,11 @@ void Options::parseCLOptions(){
         auto it = ParHandlers.find(argv_[i]);
         
         if (it != ParHandlers.end()) {
-            // Check if the next argument exists
             if (i + 1 < argc_ && argv_[i + 1][0] != '-') {
-                // Call the associated handling function with the parameter
                 it->second(*this, argv_[i],argv_[i + 1]);
                 const int bitpos = flags_.getBitOfFlag(argv_[i]);
                 flags_.setFlag(bitpos);
-                ++i; // Skip the next argument (parameter)
+                ++i;
             } else {
                 std::cerr << argv_[i] << " flag requires a non-flag parameter." << std::endl;
             }

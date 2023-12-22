@@ -22,9 +22,9 @@ private:
     
     void parseCLOptions();
     
-    //void handleNonParameterOption(std::string op);
+    //friend void handleNonParameterOption(std::string op);
     
-    //void handleParameterOption(std::string op, const char* arg);
+    //friend void handleParameterOption(std::string op, const char* arg);
     
     std::string fileArg;
     std::string urlArg;

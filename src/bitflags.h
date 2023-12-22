@@ -39,6 +39,22 @@ private:
     const int FLAG_S = 1 << 11;     // 100000000000
     //---------------- BIT FLAGS END ----------------//
     
+    
+    std::unordered_map<std::string, int> flagMap = {
+        {"-h", FLAG_H},
+        {"-f", FLAG_F},
+        {"-a", FLAG_A},
+        {"-ow", FLAG_OW},
+        {"-oj", FLAG_OJ},
+        {"-oc", FLAG_OC},
+        {"-ll", FLAG_LL},
+        {"-lu", FLAG_LU},
+        {"-ean", FLAG_EAN},
+        {"-ea7", FLAG_EA7},
+        {"-ea8", FLAG_EA8},
+        {"-s", FLAG_S}
+    };
+    
     int flags_;
     
 };
