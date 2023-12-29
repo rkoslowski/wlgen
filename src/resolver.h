@@ -21,8 +21,6 @@ public:
     
     std::set<std::string> getUniqueWords(std::string src);
     
-    
-    
 private:
     
     std::string htmlContent;

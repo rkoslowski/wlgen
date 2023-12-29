@@ -31,7 +31,6 @@ void Wordlist::generateFile(){
     // Check if the output file is successfully opened
     if (!outputFile.is_open()) {
         std::cerr << "Error opening file for writing: " << outputFilename << std::endl;
-        return 1; // Exit with an error code
     }
 
     // Write unique words to the output file

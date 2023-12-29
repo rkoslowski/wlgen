@@ -20,7 +20,7 @@ void Resolver::fetchURLContent(const char *url) {
     FILE* pipe = popen((std::string(command) + url).c_str(), "r");
     if (!pipe) {
         std::cerr << "Error: Unable to execute the command." << std::endl;
-        return EXIT_FAILURE;
+        //return EXIT_FAILURE;
     }
 
     while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
@@ -97,7 +97,6 @@ void Resolver::extractFromFile(std::string file){
 
     if (!inputFile.is_open()) {
         std::cerr << "Error opening file: " << file << std::endl;
-        return 1;
     }
 
     std::string line;
