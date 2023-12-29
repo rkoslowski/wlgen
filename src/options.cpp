@@ -60,6 +60,18 @@ void Options::parseCLOptions(){
                 it->second(*this, argv_[i],argv_[i + 1]);
                 const int bitpos = flags_.getBitOfFlag(argv_[i]);
                 flags_.setFlag(bitpos);
+                
+                if(std::strcmp(argv_[i], "-f") == 0){
+                    fileArg = argv_[i + 1];
+                }else if(std::strcmp(argv_[i], "-a") == 0){
+                    urlArg = argv_[i + 1];
+                }else if(std::strcmp(argv_[i], "-ll") == 0){
+                    lowerLimit = std::stoi(argv_[i + 1]);
+                }else if(std::strcmp(argv_[i], "-lu") == 0){
+                    upperLimit = std::stoi(argv_[i + 1]);
+                }else{
+                    std::cerr << "Error parsing the option: " << argv_[i] << "and its value" << argv_[i + 1] << std::endl;
+                };
                 ++i;
             } else {
                 std::cerr << argv_[i] << " flag requires a non-flag parameter." << std::endl;
@@ -80,7 +92,9 @@ void Options::parseCLOptions(){
     }
     
     std::cout << flags_.flagsValue() << std::endl;
-    
+    if(!(upperLimit >= lowerLimit)){
+        std::cerr << "-- upper limit can not be equal or less than the lower limit for the characterlength!" << std::endl;
+    }
 }
     
 

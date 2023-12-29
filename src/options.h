@@ -1,9 +1,8 @@
 #pragma once
 
-#include <stdio.h>
-#include <string>
 #include <iostream>
 #include <map>
+#include <cstring>
 #include "bitflags.h"
 
 class Options {
@@ -26,10 +25,10 @@ private:
     
     //friend void handleParameterOption(std::string op, const char* arg);
     
-    std::string fileArg;
-    std::string urlArg;
-    int lowerLimit;
-    int upperLimit;
+    std::string fileArg = "";
+    std::string urlArg = "";
+    int lowerLimit = 0;
+    int upperLimit = 64; //serving as "everything is okay" since the longest word in english major dict is 45 char long
     
     void printHelpToTerminal();
     
