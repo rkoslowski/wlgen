@@ -34,3 +34,5 @@
 # User specific
 .DS_Store
 build/
+.vs/
+.vscode/
