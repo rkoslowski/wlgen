@@ -3,6 +3,7 @@
 #include <iostream>
 #include <map>
 #include <cstring>
+#include <iomanip>
 #include "bitflags.h"
 
 class Options {
