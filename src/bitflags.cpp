@@ -39,3 +39,10 @@ const int BitFlags::getBitOfFlag(std::string op){
         return -1;
     }
 }
+
+bool BitFlags::validate() { 
+
+    assert((flags_ & (FLAG_F | FLAG_A)) &&
+               !(flags_ & (FLAG_F | FLAG_A) ^ (FLAG_F | FLAG_A)));
+}
+

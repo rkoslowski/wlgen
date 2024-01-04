@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include <cassert>
 
 class BitFlags {
 public:
@@ -21,6 +22,8 @@ public:
     const int getBitOfFlag(std::string op);
     
     int flagsValue();
+    
+    bool validate();
     
 private:
     
